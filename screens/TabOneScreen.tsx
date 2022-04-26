@@ -66,7 +66,7 @@
 
 
 import React, {useCallback, useEffect, useState} from 'react';
-import { Video, AVPlaybackStatus, Audio } from 'expo-av';
+import {  AVPlaybackStatus, Audio } from 'expo-av';
 import {
   ActivityIndicator,
   Image,
@@ -78,6 +78,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
+import Video from 'react-native-video';
 import Slider from '@react-native-community/slider';
 import TrackPlayer, {
   Capability,
@@ -251,7 +252,7 @@ const App = () => {
             <Text style={styles.queueButton}>Queue</Text>
           </TouchableWithoutFeedback>
         </View>
-        <Video
+        {/* <Video
         ref={video}
         style={styles.artwork}
         source={{
@@ -260,8 +261,18 @@ const App = () => {
         useNativeControls
         resizeMode="contain"
         // onPlaybackStatusUpdate={status => setStatus(() => status)}
-      />
-
+      /> */}
+<Video source={{uri: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"}}  
+playInBackground
+// Can be a URL or a local file.
+      //  ref={(ref) => {
+      //   //  this.player = ref
+      //  }}                                      // Store reference
+      //  onBuffer={this.onBuffer}                // Callback when remote video is buffering
+      //  onError={this.videoError}               // Callback when video cannot be loaded
+       style={styles.artwork}
+       
+       />
         {/* <Image style={styles.artwork} source={{uri: `${track?.artwork}`}} /> */}
         <Text style={styles.titleText}>{track?.title}</Text>
         <Text style={styles.artistText}>{track?.artist}</Text>
